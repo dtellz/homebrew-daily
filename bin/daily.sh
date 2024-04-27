@@ -24,7 +24,7 @@ fi
 daily_did() {
     add_date
     sed -i '' "/TODO:/i \\
-    - $1
+    \             - $1
     " "$LOG_FILE"
 }
 
@@ -32,7 +32,7 @@ daily_did() {
 daily_do() {
     add_date
     sed -i '' "/TODO:/a \\
-    - $1
+    \             - $1
     " "$LOG_FILE"
 }
 
