@@ -38,12 +38,10 @@ daily_do() {
 
 # Function to display today's tasks
 daily_display() {
-    today=$(date "+%A >>> %d/%m/%y:")
-    # Escape characters that might be interpreted by awk as special regex characters
-    escaped_today=$(printf '%s' "$today" | sed 's/[^^]/[&]/g; s/\^//g')
-    awk -v today="$escaped_today" '$0 ~ today, /\/\/\//' "$LOG_FILE" | tail -n +2
+    today=$(date "+%A %d/%m/%y:")
+    echo "Displaying entries for: $today"
+    awk -v today="$today" '$0 ~ today, /\/\/\//' "$LOG_FILE"
 }
-
 
 # Function to search by date or keyword
 daily_search() {

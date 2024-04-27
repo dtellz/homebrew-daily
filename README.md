@@ -58,3 +58,9 @@ If you would like to contribute to this project, please open an issue or a pull 
 ## License
 
 This project is licensed under the MIT License - see the [MIT License](https://opensource.org/licenses/MIT) file for details.
+
+## Test:
+
+daily did "create daily cli tool"
+daily do "implemente log cleaning in daily cli"
+daily display
