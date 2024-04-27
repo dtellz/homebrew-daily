@@ -10,11 +10,18 @@ A simple CLI tool to help you present your daily tasks during you remote daily s
 
 ## Installation
 
-You can install `daily` via Homebrew with the following commands:
+You can install `daily` to its latest version via Homebrew with the following commands:
 
 ```bash
 brew tap dtellz/daily
 brew install daily
+```
+
+If you see new updates and want to update your installation to the latest version use:
+
+```bash
+brew update
+brew reinstall daily
 ```
 
 ## Usage
