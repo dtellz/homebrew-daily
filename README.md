@@ -28,7 +28,7 @@ brew reinstall daily
 
 <p align="center" margin="0">
     <a href="https://www.diego-tellez.com/">
-    <img alt="stuart logo" src="./assets/daily-sample.png" width="250">
+    <img alt="stuart logo" src="./assets/daily-sample.png" width="450">
 </a>
 </p>
 
