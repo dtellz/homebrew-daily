@@ -26,18 +26,24 @@ brew reinstall daily
 
 ## Usage
 
+<p align="center" margin="0">
+    <a href="https://www.diego-tellez.com/">
+    <img alt="stuart logo" src="./assets/daily-sample.png" width="250">
+</a>
+</p>
+
 `daily` allows you to add tasks done, tasks todo, display list for the day and search on your previously added notes.
 
 You can add a task done by running:
 
 ```bash
-daily did "reviewed auth PR"
+daily did "implement auth"
 ```
 
 You can add a task todo by running:
 
 ```bash
-daily do "implement auth"
+daily do "reviewed auth PR"
 ```
 
 You can display the list of tasks for the day by running:
