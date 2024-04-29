@@ -5,10 +5,11 @@ LOG_FILE="$HOME/daily_log.txt"
 
 # Helper function to add a date entry if it's a new day
 add_date() {
-    today=$(date "+%A %d/%m/%y:")
-    if ! grep -q "$today" "$LOG_FILE"; then
+    tomorrow=$(date -v+1d "+%A %d/%m/%y:") # Calculate tomorrow's date for macOS
+    # tomorrow=$(date -d "next day" "+%A %d/%m/%y:") # Use this line instead on Linux
+    if ! grep -q "$tomorrow" "$LOG_FILE"; then
         echo "////" >> "$LOG_FILE"
-        echo "$today" >> "$LOG_FILE"
+        echo "$tomorrow" >> "$LOG_FILE"
         echo "         DID:" >> "$LOG_FILE"
         echo "         TODO:" >> "$LOG_FILE"
     fi
@@ -38,9 +39,16 @@ daily_do() {
 
 # Function to display today's tasks
 daily_display() {
-    today=$(date "+%A %d/%m/%y:")
-    echo "Displaying entries for: $today"
-    awk -v today="$today" '$0 ~ today, /\/\/\//' "$LOG_FILE"
+    if [[ $1 == "future" ]]; then
+        tomorrow=$(date -v+1d "+%A %d/%m/%y:")
+        # tomorrow=$(date -d "next day" "+%A %d/%m/%y:") # Use this line instead on Linux
+        echo "Displaying entries for: $tomorrow"
+        awk -v date="$tomorrow" '$0 ~ date, /\/\/\//' "$LOG_FILE"
+    else
+        today=$(date "+%A %d/%m/%y:")
+        echo "Displaying entries for: $today"
+        awk -v date="$today" '$0 ~ date, /\/\/\//' "$LOG_FILE"
+    fi
 }
 
 # Function to search by date or keyword
