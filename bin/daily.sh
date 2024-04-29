@@ -42,11 +42,11 @@ daily_display() {
     if [[ $1 == "future" ]]; then
         tomorrow=$(date -v+1d "+%A %d/%m/%y:")
         # tomorrow=$(date -d "next day" "+%A %d/%m/%y:") # Use this line instead on Linux
-        echo "Displaying entries for: $tomorrow"
+        echo "Displaying entries for tomorrow: $tomorrow"
         awk -v date="$tomorrow" '$0 ~ date, /\/\/\//' "$LOG_FILE"
     else
         today=$(date "+%A %d/%m/%y:")
-        echo "Displaying entries for: $today"
+        echo "Displaying entries for today: $today"
         awk -v date="$today" '$0 ~ date, /\/\/\//' "$LOG_FILE"
     fi
 }

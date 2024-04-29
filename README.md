@@ -34,13 +34,13 @@ brew reinstall daily
 
 `daily` allows you to add tasks done, tasks todo, display list for the day and search on your previously added notes.
 
-You can add a task done by running:
+You can add a task done for tomorrows list by running:
 
 ```bash
 daily did "implement auth"
 ```
 
-You can add a task todo by running:
+You can add a task todo for tomorrows list by running:
 
 ```bash
 daily do "reviewed auth PR"
@@ -50,6 +50,12 @@ You can display the list of tasks for the day by running:
 
 ```bash
 daily display
+```
+
+You can display the list of tasks for tomorrow by running:
+
+```bash
+daily 
 ```
 
 You can search for a task by running:
