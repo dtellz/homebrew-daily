@@ -11,6 +11,8 @@ add_date() {
         echo "////" >> "$LOG_FILE"
         echo "$tomorrow" >> "$LOG_FILE"
         echo "         DID:" >> "$LOG_FILE"
+        echo "" >> "$LOG_FILE"  # Add a blank line here
+        echo "$tomorrow" >> "$LOG_FILE"
         echo "         TODO:" >> "$LOG_FILE"
     fi
 }
@@ -25,16 +27,18 @@ fi
 daily_did() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/$tomorrow/{n;:a;n;/^ *TODO:/b;s/$/\\
-         - $1/;ba}" "$LOG_FILE"
+    sed -i '' "/${tomorrow}\n\s*DID:/a \\
+    \             - $1
+    " "$LOG_FILE"
 }
 
 # Function to handle the 'do' command
 daily_do() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/$tomorrow/{n;:a;n;/^ *DID:/b;s/$/\\
-         - $1/;ba}" "$LOG_FILE"
+    sed -i '' "/${tomorrow}\n\s*TODO:/a \\
+    \             - $1
+    " "$LOG_FILE"
 }
 
 # Function to display today's tasks
