@@ -25,18 +25,16 @@ fi
 daily_did() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/^$tomorrow/a \\
-    \             - $1
-    " "$LOG_FILE"
+    sed -i '' "/^$tomorrow$/a\\
+         - $1" "$LOG_FILE"
 }
 
 # Function to handle the 'do' command
 daily_do() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/^$tomorrow/a \\
-    \             - $1
-    " "$LOG_FILE"
+    sed -i '' "/^$tomorrow$/a\\
+         - $1" "$LOG_FILE"
 }
 
 # Function to display today's tasks
@@ -83,4 +81,3 @@ case "$1" in
         echo "Usage: daily [did|do|display|search] [args]"
         ;;
 esac
-
