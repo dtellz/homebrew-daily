@@ -1,8 +1,8 @@
 class Daily < Formula
     desc "CLI tool to track your daily tasks to help you share with your team during daily standup"
     homepage "https://github.com/dtellz/daily"
-    url "https://github.com/dtellz/homebrew-daily/archive/refs/tags/v0.0.8.tar.gz"
-    sha256 "e90dd3edcdf72ee608d4a956420f36b401c2f94b146452fbc59da53d6d90eb14"
+    url "https://github.com/dtellz/homebrew-daily/archive/refs/tags/v0.0.9.tar.gz"
+    sha256 "59a6943fd84ecb24caa8034ae178063e7f720e5a7b13a1553606243fc275c675"
     license "MIT"
   
     def install
