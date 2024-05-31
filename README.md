@@ -83,3 +83,22 @@ This project is licensed under the MIT License - see the [MIT License](https://o
 daily did "create daily cli tool"
 daily do "implemente log cleaning in daily cli"
 daily display
+
+## NEEDS FIX:
+
+sed command inserts tasks for every occurrence of DO/DID this needs to be fixed to look for the right date (tomorrow), list might need to be formatted to:
+
+```bash
+Saturday 01/06/24:
+         DID:
+            - genAI progress and updates
+Saturday 01/06/24:
+         TODO:
+            - fix daily cli
+```
+
+so the sed command needs to search for 
+```
+Saturday 01/06/24:
+         TODO:
+```
