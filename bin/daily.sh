@@ -27,18 +27,18 @@ fi
 daily_did() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/${tomorrow}\n\s*DID:/a \\
+    sed -i '' "/${tomorrow}/,/DID:/ {/DID:/a\\
     \             - $1
-    " "$LOG_FILE"
+    }" "$LOG_FILE"
 }
 
 # Function to handle the 'do' command
 daily_do() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/${tomorrow}\n\s*TODO:/a \\
+    sed -i '' "/${tomorrow}/,/TODO:/ {/TODO:/a\\
     \             - $1
-    " "$LOG_FILE"
+    }" "$LOG_FILE"
 }
 
 # Function to display today's tasks
