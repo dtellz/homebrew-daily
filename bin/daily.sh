@@ -11,8 +11,6 @@ add_date() {
         echo "////" >> "$LOG_FILE"
         echo "$tomorrow" >> "$LOG_FILE"
         echo "         DID:" >> "$LOG_FILE"
-        echo "" >> "$LOG_FILE"  # Add a blank line here
-        echo "$tomorrow" >> "$LOG_FILE"
         echo "         TODO:" >> "$LOG_FILE"
     fi
 }
@@ -26,25 +24,24 @@ fi
 # Function to handle the 'did' command
 daily_did() {
     add_date
-    tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/${tomorrow}/,/DID:/ {/DID:/a\\
+    sed -i '' "/TODO:/i \\
     \             - $1
-    }" "$LOG_FILE"
+    " "$LOG_FILE"
 }
 
 # Function to handle the 'do' command
 daily_do() {
     add_date
-    tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/${tomorrow}/,/TODO:/ {/TODO:/a\\
+    sed -i '' "/TODO:/a \\
     \             - $1
-    }" "$LOG_FILE"
+    " "$LOG_FILE"
 }
 
 # Function to display today's tasks
 daily_display() {
     if [[ $1 == "future" ]]; then
         tomorrow=$(date -v+1d "+%A %d/%m/%y:")
+        # tomorrow=$(date -d "next day" "+%A %d/%m/%y:") # Use this line instead on Linux
         echo "Displaying entries for tomorrow: $tomorrow"
         awk -v date="$tomorrow" '$0 ~ date, /\/\/\//' "$LOG_FILE"
     else
