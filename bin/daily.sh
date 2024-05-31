@@ -25,23 +25,22 @@ fi
 daily_did() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/^$tomorrow$/a\\
-         - $1" "$LOG_FILE"
+    sed -i '' "/$tomorrow/{n;:a;n;/^ *TODO:/b;s/$/\\
+         - $1/;ba}" "$LOG_FILE"
 }
 
 # Function to handle the 'do' command
 daily_do() {
     add_date
     tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-    sed -i '' "/^$tomorrow$/a\\
-         - $1" "$LOG_FILE"
+    sed -i '' "/$tomorrow/{n;:a;n;/^ *DID:/b;s/$/\\
+         - $1/;ba}" "$LOG_FILE"
 }
 
 # Function to display today's tasks
 daily_display() {
     if [[ $1 == "future" ]]; then
         tomorrow=$(date -v+1d "+%A %d/%m/%y:")
-        # tomorrow=$(date -d "next day" "+%A %d/%m/%y:") # Use this line instead on Linux
         echo "Displaying entries for tomorrow: $tomorrow"
         awk -v date="$tomorrow" '$0 ~ date, /\/\/\//' "$LOG_FILE"
     else
